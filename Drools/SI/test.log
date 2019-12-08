@@ -1,0 +1,111 @@
+<object-stream>
+<org.drools.core.audit.WorkingMemoryLog>
+  <version>6.1</version>
+  <events>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Question1 [0]</activationId>
+      <rule>Question1</rule>
+      <declarations></declarations>
+      <factHandleIds>0</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>Question1 [0]</activationId>
+      <rule>Question1</rule>
+      <declarations></declarations>
+      <factHandleIds>0</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>1</factId>
+      <objectToString>Question( question=How old are you?, answer=Over 18 )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>Question1 [0]</activationId>
+      <rule>Question1</rule>
+      <declarations></declarations>
+      <factHandleIds>0</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Question3 [1]</activationId>
+      <rule>Question3</rule>
+      <declarations>q=Question( question=How old are you?, answer=Over 18 )</declarations>
+      <factHandleIds>1</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>Question3 [1]</activationId>
+      <rule>Question3</rule>
+      <declarations>q=Question( question=How old are you?, answer=Over 18 )</declarations>
+      <factHandleIds>1</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>2</factId>
+      <objectToString>Question( question=Are you more frightened of dead or the living?, answer=I don&apos;t care as long as the devil isn&apos;t involved. )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>Question3 [1]</activationId>
+      <rule>Question3</rule>
+      <declarations>q=Question( question=How old are you?, answer=Over 18 )</declarations>
+      <factHandleIds>1</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Question8 [2]</activationId>
+      <rule>Question8</rule>
+      <declarations>q=Question( question=Are you more frightened of dead or the living?, answer=I don&apos;t care as long as the devil isn&apos;t involved. )</declarations>
+      <factHandleIds>2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>Question8 [2]</activationId>
+      <rule>Question8</rule>
+      <declarations>q=Question( question=Are you more frightened of dead or the living?, answer=I don&apos;t care as long as the devil isn&apos;t involved. )</declarations>
+      <factHandleIds>2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>3</factId>
+      <objectToString>Question( question=Do you like children?, answer=No )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>Question8 [2]</activationId>
+      <rule>Question8</rule>
+      <declarations>q=Question( question=Are you more frightened of dead or the living?, answer=I don&apos;t care as long as the devil isn&apos;t involved. )</declarations>
+      <factHandleIds>2</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>4</type>
+      <activationId>Haxan [3]</activationId>
+      <rule>Haxan</rule>
+      <declarations>q=Question( question=Do you like children?, answer=No )</declarations>
+      <factHandleIds>3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>6</type>
+      <activationId>Haxan [3]</activationId>
+      <rule>Haxan</rule>
+      <declarations>q=Question( question=Do you like children?, answer=No )</declarations>
+      <factHandleIds>3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+    <org.drools.core.audit.event.ObjectLogEvent>
+      <type>1</type>
+      <factId>4</factId>
+      <objectToString>Movie( title=Haxan )</objectToString>
+    </org.drools.core.audit.event.ObjectLogEvent>
+    <org.drools.core.audit.event.ActivationLogEvent>
+      <type>7</type>
+      <activationId>Haxan [3]</activationId>
+      <rule>Haxan</rule>
+      <declarations>q=Question( question=Do you like children?, answer=No )</declarations>
+      <factHandleIds>3</factHandleIds>
+    </org.drools.core.audit.event.ActivationLogEvent>
+  </events>
+</org.drools.core.audit.WorkingMemoryLog>
+</object-stream>

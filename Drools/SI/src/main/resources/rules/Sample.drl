@@ -1,0 +1,660 @@
+package com.sample.rules
+ 
+import com.sample.DroolsTest.*;
+import java.util.Scanner;
+import com.sample.Gui;
+import com.sample.DecisionGui;
+
+declare Movie
+	title : String
+end
+
+declare Question
+	question : String
+	answer : String
+end
+
+function String getAnswer(String question, String[] answers){
+		String answer = null;
+	    Gui $gui = new Gui(question, answers);
+        while($gui.answer == null){System.out.print("");};
+        answer = $gui.answer;
+        
+        return answer;
+}
+
+rule "Question1"
+	when
+		not Question(question == "How old are you?");
+	then
+		String question = "How old are you?";
+		String[] answers = {"Under 18", "Over 18"};
+
+		String answer = getAnswer(question, answers);
+        
+        insert(new Question(question, answer));
+end
+
+rule "Question2"
+	when
+		q: Question(question == "How old are you?" && answer == "Under 18" );
+	then
+		String question = "Are you male or female?";
+		String[] answers = {"Female", "Male"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question("Are you male or female?", answer));
+end
+
+rule "Question3"
+	when
+		q: Question(question == "How old are you?" && answer == "Over 18" );
+	then
+		String question = "Are you more frightened of dead or the living?";
+		String[] answers = {"Have you seen the news lately? The living, no matter what planet they're from.", "Things that crawl scare me more than anything else.", "I'm frightened of the dead.", "I don't care as long as the devil isn't involved.", "I'm most afraid of anything that's a little bit of both"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question("Are you more frightened of dead or the living?", answer));
+end
+
+rule "Question4"
+	when
+		q: Question(question =="Are you male or female?" && answer == "Male");
+	then
+		String question = "Are you catholic?";
+		String[] answers = {"Yes", "No"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question5"
+	when
+		q: Question(question =="Are you more frightened of dead or the living?" && answer == "Have you seen the news lately? The living, no matter what planet they're from.");
+	then
+		String question = "What are your feelings about dogs, hairy people, or hairy dogs?";
+		String[] answers = {"I poop my pants every time I smell Alpo.", "Dogs and(or) bearded guys are cool with me."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question6"
+	when
+		q: Question(question =="Are you more frightened of dead or the living?" && answer == "Things that crawl scare me more than anything else.");
+	then
+		String question = "How many legs scare you the most?";
+		String[] answers = {"Eight", "Six", "Others"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question7"
+	when
+		q: Question(question =="Are you more frightened of dead or the living?" && answer == "I'm frightened of the dead.");
+	then
+		String question = "Do you care if they have a body?";
+		String[] answers = {"Yes. Bodies are how they eat your brains.", "Without a body is scarier."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question8"
+	when
+		q: Question(question =="Are you more frightened of dead or the living?" && answer == "I don't care as long as the devil isn't involved.");
+	then
+		String question = "Do you like children?";
+		String[] answers = {"I love the cute little buggers! Especially when they're...", "No"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question9"
+	when
+		q: Question(question =="Are you more frightened of dead or the living?" && answer == "I'm most afraid of anything that's a little bit of both");
+	then
+		String question = "Christopher Lee is...";
+		String[] answers = {"A legend", "That guy who played Count Dooku"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question10"
+	when
+		q: Question(question =="What are your feelings about dogs, hairy people, or hairy dogs?" && answer == "I poop my pants every time I smell Alpo.");
+	then
+		String question = "Are you an enviromentalist?";
+		String[] answers = {"Meh. I do my part but don't go nuts.", "Every day is Earth day"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question11"
+	when
+		q: Question(question =="What are your feelings about dogs, hairy people, or hairy dogs?" && answer == "Dogs and(or) bearded guys are cool with me.");
+	then
+		String question = "Are you worried about people with higher intelligence?";
+		String[] answers = {"Not really, murderous maniacs, on the other hand...", "Definitely, especially when they're..."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question12"
+	when
+		q: Question(question =="Are you an enviromentalist?" && answer == "Meh. I do my part but don't go nuts.");
+	then
+		String question = "Did puberty suck?";
+		String[] answers = {"Yes", "It wasn't so bad"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question13"
+	when
+		q: Question(question =="Did puberty suck?" && answer == "It wasn't so bad");
+	then
+		String question = "If visiting the UK, which would you rather do?";
+		String[] answers = {"Picadilly Circus, maybe an adult movie theater", "Visit a countryside..."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question14"
+	when
+		q: Question(question =="If visiting the UK, which would you rather do?" && answer == "Visit a countryside...");
+	then
+		String question = "Visit a countryside...";
+		String[] answers = {"castle.", "battlefield."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question15"
+	when
+		q: Question(question =="Are you worried about people with higher intelligence?" && answer == "Not really, murderous maniacs, on the other hand...");
+	then
+		String question = "Specifically, I'm most worried...";
+		String[] answers = {"of people with sweaters", "of people who take Halloween too seriously", "of overzealous hockey fans", "about Texans", "of movie nerds", "of vicious androgynous children"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question16"
+	when
+		q: Question(question =="Are you worried about people with higher intelligence?" && answer == "Definitely, especially when they're...");
+	then
+		String question = "Definitely, especially when they're...";
+		String[] answers = {"from another planet", "working in a lab"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question17"
+	when
+		q: Question(question =="Definitely, especially when they're..." && answer == "from another planet");
+	then
+		String question = "Does the circus scare you?";
+		String[] answers = {"Not really", "Where clowns live? Are you crazy? No."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question18"
+	when
+		q: Question(question =="Definitely, especially when they're..." && answer == "working in a lab");
+	then
+		String question = "Are you also afraid of insects?";
+		String[] answers = {"I hate them.", "Things I swat with my hand? No."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question19"
+	when
+		q: Question(question =="Are you also afraid of insects?" && answer == "Things I swat with my hand? No.");
+	then
+		String question = "How do you feel about people having sex with severed re-animated heads?";
+		String[] answers = {"I love seeing people do that thing you just said!", "We're talking about corpses. Show a little decorum."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question20"
+	when
+		q: Question(question =="How many legs scare you the most?" && answer == "Eight");
+	then
+		String question = "I prefer films starring members of...";
+		String[] answers = {"The cast of Star Trek", "The cast of Roseanne"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question21"
+	when
+		q: Question(question =="Do you care if they have a body?" && answer == "Yes. Bodies are how they eat your brains.");
+	then
+		String question = "Can dogs look up?";
+		String[] answers = {"Yes", "What's all this talk of dogs? Let's go to the mall."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question22"
+	when
+		q: Question(question =="Do you care if they have a body?" && answer == "Without a body is scarier.");
+	then
+		String question = "Could George C. Scott protect you?";
+		String[] answers = {"Yes", "No"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question23"
+	when
+		q: Question(question =="Do you like children?" && answer == "I love the cute little buggers! Especially when they're...");
+	then
+		String question = "I love the cute little buggers! Especially when they're...";
+		String[] answers = {"babies", "in grade school."};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question24"
+	when
+		q: Question(question =="I love the cute little buggers! Especially when they're..." && answer == "in grade school.");
+	then
+		String question = "Do you ever want to eat pea soup again?";
+		String[] answers = {"Who cares?", "Yes, I love pea soup"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question25"
+	when
+		q: Question(question =="Christopher Lee is..." && answer == "A legend");
+	then
+		String question = "Do you like hippies?";
+		String[] answers = {"No", "The real terror is 19th century virginal women"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Question26"
+	when
+		q: Question(question =="Christopher Lee is..." && answer == "That guy who played Count Dooku");
+	then
+		String question = "I prefer my vampires...";
+		String[] answers = {"Eastern European", "silent", "with a big beehive hairdo"};
+		
+		String answer = getAnswer(question, answers);
+		
+        insert(new Question(question, answer));
+end
+
+rule "Dracula(1931)"
+	when
+		q: Question(question == "I prefer my vampires..." && answer == "Eastern European");
+	then
+		String title = "Dracula(1931)";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Nosferatu"
+	when
+		q: Question(question == "I prefer my vampires..." && answer == "silent");
+	then
+		String title = "Nosferatu";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Dracula(1992)"
+	when
+		q: Question(question == "I prefer my vampires..." && answer == "with a big beehive hairdo");
+	then
+		String title = "Dracula(1992)";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Horror of Dracula"
+	when
+		q: Question(question == "Do you like hippies?" && answer == "The real terror is 19th century virginal women");
+	then
+		String title = "The Horror of Dracula";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Dracula A.D. 1972"
+	when
+		q: Question(question == "Do you like hippies?" && answer == "No");
+	then
+		String title = "Dracula A.D. 1972";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Exorcist"
+	when
+		q: Question(question == "Do you ever want to eat pea soup again?" && answer == "Who cares?");
+	then
+		String title = "The Exorcist";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Omen"
+	when
+		q: Question(question == "Do you ever want to eat pea soup again?" && answer == "Yes, I love pea soup");
+	then
+		String title = "The Omen";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Rosemary's baby"
+	when
+		q: Question(question == "I love the cute little buggers! Especially when they're..." && answer == "babies");
+	then
+		String title = "Rosemary's baby";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Haxan"
+	when
+		q: Question(question == "Do you like children?" && answer == "No");
+	then
+		String title = "Haxan";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Poltergeist"
+	when
+		q: Question(question == "Could George C. Scott protect you?" && answer == "No");
+	then
+		String title = "Poltergeist";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Changeling"
+	when
+		q: Question(question == "Could George C. Scott protect you?" && answer == "Yes");
+	then
+		String title = "The Changeling";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Dawn of the Dead"
+	when
+		q: Question(question == "Can dogs look up?" && answer == "What's all this talk of dogs? Let's go to the mall.");
+	then
+		String title = "Dawn of the Dead";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Shaun of the Dead"
+	when
+		q: Question(question == "Can dogs look up?" && answer == "Yes");
+	then
+		String title = "Shaun of the Dead";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Kingdom of the Spiders"
+	when
+		q: Question(question == "I prefer films starring members of..." && answer == "The cast of Star Trek");
+	then
+		String title = "Kingdom of the Spiders";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Arachnophobia"
+	when
+		q: Question(question == "I prefer films starring members of..." && answer == "The cast of Roseanne");
+	then
+		String title = "Arachnophobia";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Human Centipede"
+	when
+		q: Question(question == "How many legs scare you the most?" && answer == "Others");
+	then
+		String title = "The Human Centipede";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Them!"
+	when
+		q: Question(question == "How many legs scare you the most?" && answer == "Six");
+	then
+		String title = "Them!";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Re-animator"
+	when
+		q: Question(question == "How do you feel about people having sex with severed re-animated heads?" && answer == "I love seeing people do that thing you just said!");
+	then
+		String title = "Re-animator";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Frankenstein"
+	when
+		q: Question(question == "How do you feel about people having sex with severed re-animated heads?" && answer == "We're talking about corpses. Show a little decorum.");
+	then
+		String title = "Frankenstein";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Fly"
+	when
+		q: Question(question == "Are you also afraid of insects?" && answer == "I hate them.");
+	then
+		String title = "The Fly";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Killer Klowns from Outer Space"
+	when
+		q: Question(question == "Does the circus scare you?" && answer == "Where clowns live? Are you crazy? No.");
+	then
+		String title = "Killer Klowns from Outer Space";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Alien"
+	when
+		q: Question(question == "Does the circus scare you?" && answer == "Not really");
+	then
+		String title = "Alien";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Sleepaway Camp"
+	when
+		q: Question(question == "Specifically, I'm most worried..." && answer == "of vicious androgynous children");
+	then
+		String title = "Sleepaway Camp";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Scream"
+	when
+		q: Question(question == "Specifically, I'm most worried..." && answer == "of movie nerds");
+	then
+		String title = "Scream";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Texas Chainsaw Massacre"
+	when
+		q: Question(question == "Specifically, I'm most worried..." && answer == "about Texans");
+	then
+		String title = "The Texas Chainsaw Massacre";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Friday the 13th"
+	when
+		q: Question(question == "Specifically, I'm most worried..." && answer == "of overzealous hockey fans");
+	then
+		String title = "Friday the 13th";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Halloween"
+	when
+		q: Question(question == "Specifically, I'm most worried..." && answer == "of people who take Halloween too seriously");
+	then
+		String title = "Halloween";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "A Nightmare on Elm Street"
+	when
+		q: Question(question == "Specifically, I'm most worried..." && answer == "of people with sweaters");
+	then
+		String title = "A Nightmare on Elm Street";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Dog Soldiers"
+	when
+		q: Question(question == "Visit a countryside..." && answer == "castle.");
+	then
+		String title = "Dog Soldiers";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "The Wolf Man"
+	when
+		q: Question(question == "Visit a countryside..." && answer == "battlefield.");
+	then
+		String title = "The Wolf Man";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "An American Werewolf in London"
+	when
+		q: Question(question == "If visiting the UK, which would you rather do?" && answer == "Picadilly Circus, maybe an adult movie theater");
+	then
+		String title = "An American Werewolf in London";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Killer Nun"
+	when
+		q: Question(question == "Are you catholic?" && answer == "Yes");
+	then
+		String title = "Killer Nun";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Wolfen"
+	when
+		q: Question(question == "Are you an enviromentalist?" && answer == "Every day is Earth day");
+	then
+		String title = "Wolfen";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Ginger Snaps"
+	when
+		q: Question(question == "Did puberty suck?" && answer == "Yes");
+	then
+		String title = "Ginger Snaps";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Slaughter Hotel"
+	when
+		q: Question(question == "Are you catholic?" && answer == "No");
+	then
+		String title = "Slaughter Hotel";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
+
+rule "Twilight"
+	when
+		q: Question(question == "Are you male or female?" && answer == "Female");
+	then
+		String title = "Twilight";
+		new DecisionGui(title);
+		insert(new Movie(title));
+end
